@@ -1,2 +1,4 @@
 *.out
+rust_out
+target/
 [#]*[#]

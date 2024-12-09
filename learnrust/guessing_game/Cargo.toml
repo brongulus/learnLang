@@ -1,0 +1,25 @@
+# • We can create a project using ‘cargo new’.
+# • We can build a project using ‘cargo build’.
+# • We can build and run a project in one step using ‘cargo run’.
+# • We can build a project without producing a binary to check for
+#   errors using ‘cargo check’.
+# • Instead of saving the result of the build in the same directory as
+#   our code, Cargo stores it in the ‘target/debug’ directory.
+# • If you're benchmarking your code's running time,
+#   be sure to run ‘cargo build --release’ and benchmark with the executable
+#   in ‘target/release.
+[package]
+name = "guessing_game"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# The specifier ‘0.8.5’ is actually shorthand for ‘^0.8.5’,
+# which means any version that is at least 0.8.5 but below 0.9.0.
+# When you ‘do’ want to update a crate, Cargo provides the command
+# ‘update’, which will ignore the ‘Cargo.lock’ file and figure out all the
+# latest versions that fit your specifications in ‘Cargo.toml’.
+# When we include an external dependency, Cargo fetches the latest
+# versions of everything that dependency needs from the ‘registry’, which
+# is a copy of data from Cratesio (https://crates.io/).
+rand = "0.8.5"
