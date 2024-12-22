@@ -20,8 +20,8 @@ fn main() {
     // Rust has second string type, ‘String’. This type manages data allocated on the
     // heap and is able to store an amount of text that is unknown at compile time.
     {
-        let mut s = String::from("Hello"); // Memory requested from allocator at runtime (s is valid now)
-        s.push_str(", world!");
+        let mut s = String::from(", world"); // Memory requested from allocator at runtime (s is valid now)
+        s.insert_str(0, "Hello");
 
         println!("{s} from inside the {{}} scope");
     } // scope is over and s is no longer valid, memory is returned to the allocator ('drop' called)
@@ -30,7 +30,9 @@ fn main() {
     let y = x; // <-- bind y to copy of value in x which is 5
 
     // A string is made of 'pointer' to the memory having its contents, 'length' and 'capacity'
-    let s1 = String::from("Hello");
+    // TODO: https://www.openmymind.net/Rust-Strings/
+    // to_owned converts &str to String
+    let s1 = "Hello".to_owned(); // equivalent to String::new("Hello")
     let mut s2 = s1; // <-- s2 "isn't" bound to copy of value in s1
     println!("{s2}, world! from s2");
 
@@ -222,8 +224,8 @@ fn slices() {
     let _hello = &s[..5]; // s[0..5]
     let _world = &s[6..]; // s[6..s.len()]
     let _slice = &s[..]; // s[0..s.len()]
-    println!("{}", first_word_slice(&"abcd efgh".to_string())); // abcd
-    println!("{}", first_word_slice(&"abcdefgh".to_string())); // abcdefgh
+    println!("{}", first_word_slice("abcd efgh")); // abcd
+    println!("{}", first_word_slice("abcdefgh")); // abcdefgh
 
     // String literals are slices (immutable ref to data)
     let s = "Hello, world!";

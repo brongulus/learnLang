@@ -1,7 +1,9 @@
 This repo contains commented code from the Rust programming language book.
 
-1. ./guessing_game/src/main.rs
-2. ./variables/src/main.rs
-3. ./branches/src/main.rs
-4. ./exercises/src/main.rs
-5. ./ownership/src/main.rs
+1. [[./guessing_game/src/main.rs]]
+2. [[./variables/src/main.rs]]
+3. [[./branches/src/main.rs]]
+4. [[./exercises/src/main.rs]]
+5. [[./ownership/src/main.rs]]
+6. [[./structs/src/main.rs]]
+7. [[./enums/src/main.rs]]

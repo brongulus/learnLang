@@ -32,7 +32,7 @@ fn main() {
 fn read_int() -> i32 {
     let mut input = String::new();
     io::stdin().read_line(&mut input).expect("String");
-    return input.trim().parse().expect("Input not an integer");
+    input.trim().parse().expect("Input not an integer")
 }
 
 fn convert_temp(temp: i32) {
@@ -48,7 +48,7 @@ fn fibonacci() {
     let (mut first, mut second): (u64, u64) = (0, 1);
     for _ in 1..n {
         let temp = second;
-        second = first + second;
+        second += first;
         first = temp;
     }
     if n <= 0 {
@@ -59,6 +59,7 @@ fn fibonacci() {
 }
 
 fn carol() {
+    // Ref: https://www.openmymind.net/Rust-Strings/
     fn repeating_line(index: i32) {
         let day = match index {
             1 => "first",
@@ -69,16 +70,16 @@ fn carol() {
         println!("\nOn the {day} day of Christmas my true love sent to me")
     }
 
-    let mut recursive_line = "A patridge in a pear tree.".to_string();
+    let mut recursive_line = String::from("A patridge in a pear tree.");
     for i in 1..=3 {
         repeating_line(i);
         match i {
             1 => {}
             2 => {
-                recursive_line = "Two turtle doves,\nAnd ".to_string() + &recursive_line;
+                recursive_line = format!("Tow turtle doves,\nAnd {}", recursive_line);
             }
             3 => {
-                recursive_line = "Three French hens,\n".to_string() + &recursive_line;
+                recursive_line = "Three French hens,\n".to_owned() + &recursive_line;
             }
             _ => {
                 continue;
